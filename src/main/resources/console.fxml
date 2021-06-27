@@ -4,19 +4,24 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
 <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
       xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="com.github.tony84727.serverconsole.Controller">
     <GridPane>
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
-            <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="10.0" prefWidth="100.0"/>
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="408.0" minWidth="10.0" prefWidth="392.0"/>
+            <ColumnConstraints halignment="CENTER" maxWidth="136.0" minWidth="10.0" prefWidth="120.0"/>
         </columnConstraints>
         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
         </rowConstraints>
         <Button fx:id="launchButton" mnemonicParsing="false" onAction="#action" text="Launch" GridPane.columnIndex="1"/>
         <TextField fx:id="launchCommand" promptText="Launch command"/>
+        <Text fx:id="workingDirectory" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" GridPane.rowIndex="1"/>
+        <Button fx:id="chooseDirectoryButton" mnemonicParsing="false" text="Choose directory" GridPane.columnIndex="1"
+                GridPane.rowIndex="1" onAction="#chooseDirectory"/>
     </GridPane>
     <TextArea fx:id="message" editable="false" VBox.vgrow="ALWAYS"/>
 </VBox>
