@@ -39,4 +39,3 @@ jobs:
             build/jpackage/*.pkg
             build/jpackage/*.rpm
             build/jpackage/*.msi
-            build/jpackage/*.exe
