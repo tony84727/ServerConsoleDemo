@@ -30,9 +30,17 @@ test {
     useJUnitPlatform()
 }
 
+ext.os = org.gradle.internal.os.OperatingSystem.current()
+
 jlink {
     options = ['--strip-debug', '--compress', '2', '--no-header-files', '--no-man-pages']
     launcher {
         name = 'Server Console'
+        noConsole = true
+    }
+    jpackage {
+        if(os.windows) {
+            installerOptions = ['--win-per-user-install', '--win-dir-chooser', '--win-menu']
+        }
     }
 }
