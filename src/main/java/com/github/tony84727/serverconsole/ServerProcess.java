@@ -37,10 +37,18 @@ public class ServerProcess {
     }
 
     public InputStream getInputStream() {
+        this.ensureHasProcess();
         return this.process.getInputStream();
     }
 
     public OutputStream getOutputStream() {
+        this.ensureHasProcess();
         return this.process.getOutputStream();
+    }
+
+    private void ensureHasProcess() {
+        if (this.process == null) {
+            throw new IllegalStateException("there's no server process");
+        }
     }
 }
