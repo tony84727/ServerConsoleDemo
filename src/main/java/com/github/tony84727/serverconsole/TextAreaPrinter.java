@@ -1,7 +1,5 @@
 package com.github.tony84727.serverconsole;
 
-import javafx.scene.control.TextArea;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
