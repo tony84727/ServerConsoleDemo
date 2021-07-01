@@ -10,6 +10,7 @@ import javafx.stage.DirectoryChooser;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 public class Controller {
     @FXML
@@ -25,7 +26,13 @@ public class Controller {
     private Button chooseDirectoryButton;
 
     @FXML
+    private Button executeCommandButton;
+
+    @FXML
     private Text workingDirectory;
+
+    @FXML
+    private TextField command;
 
     private final ServerProcess server;
 
@@ -34,6 +41,7 @@ public class Controller {
     }
 
     public void initialize() {
+        this.reset();
         this.workingDirectory.setText(this.server.getDirectory());
     }
 
@@ -47,6 +55,20 @@ public class Controller {
             return;
         }
         this.start();
+    }
+
+    public void execute() {
+        if (this.server.isRunning()) {
+            String toExecute = command.getText();
+            command.clear();
+            OutputStreamWriter writer = new OutputStreamWriter(this.server.getOutputStream());
+            try {
+                writer.write(toExecute + "\n");
+                writer.flush();
+            } catch (IOException e) {
+                System.out.println("fail to send command");
+            }
+        }
     }
 
     public void chooseDirectory() {
@@ -79,6 +101,7 @@ public class Controller {
     private void setToRunningMode() {
         this.launchCommand.setEditable(false);
         this.launchButton.setDisable(true);
+        this.executeCommandButton.setDisable(false);
         this.chooseDirectoryButton.setDisable(true);
     }
 
@@ -86,5 +109,6 @@ public class Controller {
         this.launchCommand.setEditable(true);
         this.launchButton.setDisable(false);
         this.chooseDirectoryButton.setDisable(false);
+        this.executeCommandButton.setDisable(true);
     }
 }

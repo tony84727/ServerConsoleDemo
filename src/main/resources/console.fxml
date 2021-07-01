@@ -35,8 +35,8 @@
     <TextArea fx:id="message" editable="false" VBox.vgrow="ALWAYS" />
    <HBox>
       <children>
-         <TextField maxWidth="1.7976931348623157E308" promptText="Command" HBox.hgrow="ALWAYS" />
-         <Button mnemonicParsing="false" text="Execute">
+         <TextField fx:id="command" maxWidth="1.7976931348623157E308" promptText="Command" HBox.hgrow="ALWAYS" onAction="#execute" />
+         <Button fx:id="executeCommandButton" mnemonicParsing="false" text="Execute" onAction="#execute">
             <HBox.margin>
                <Insets left="4.0" />
             </HBox.margin>
