@@ -28,14 +28,3 @@ jobs:
         run: chmod +x gradlew
       - name: Build with Gradle
         run: ./gradlew build
-      - name: Package
-        run: ./gradlew jpackage
-      - name: Upload artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: ${{ matrix.os }}-package
-          path: |
-            build/jpackage/*.dmg
-            build/jpackage/*.pkg
-            build/jpackage/*.rpm
-            build/jpackage/*.msi
