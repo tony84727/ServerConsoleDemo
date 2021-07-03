@@ -1,6 +1,8 @@
 name: Release
 on:
   push:
+    tags:
+      - v*
 
 jobs:
   create-draft:
@@ -42,9 +44,6 @@ jobs:
         run: ./gradlew build
       - name: Package
         run: ./gradlew jpackage
-      - name: List files
-        working-directory: build/jpackage
-        run: ls
       - name: Upload files
         working-directory: build/jpackage
         env:
