@@ -13,7 +13,7 @@ jobs:
         id: tag
         run: echo ::set-output name=tag::${GITHUB_REF/refs\/tags\//}
       - name: Create Release draft
-        run: gh release create -d -t  "Realse ${{ steps.tag.outputs.tag }}" ${{ github.ref }}
+        run: gh release create -d -t  "Release ${{ steps.tag.outputs.tag }}" ${{ github.ref }}
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
   release:
