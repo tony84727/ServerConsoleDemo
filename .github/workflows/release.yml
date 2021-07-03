@@ -24,7 +24,7 @@ jobs:
           - os: ubuntu-latest
             package: "*.rpm *.deb"
           - os: windows-latest
-            package: "\"*.msi\""
+            package: "$(Get-ChildItem '*.msi')"
           - os: macos-latest
             package: "*.dmg *.pkg"
       fail-fast: false
